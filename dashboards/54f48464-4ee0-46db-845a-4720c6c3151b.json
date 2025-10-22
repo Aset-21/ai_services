@@ -1,0 +1,168 @@
+{
+  "data": [
+    {
+      "date": "2025-09-01",
+      "quantity": 5,
+      "product": "Ноутбук Lenovo ThinkPad X1"
+    },
+    {
+      "date": "2025-09-02",
+      "quantity": 12,
+      "product": "Смартфон Samsung Galaxy S25"
+    },
+    {
+      "date": "2025-09-03",
+      "quantity": 8,
+      "product": "Наушники Sony WH-1000XM6"
+    },
+    {
+      "date": "2025-09-04",
+      "quantity": 20,
+      "product": "Кофеварка Philips LatteGo"
+    },
+    {
+      "date": "2025-09-05",
+      "quantity": 15,
+      "product": "Игровая приставка PlayStation 6"
+    },
+    {
+      "date": "2025-09-06",
+      "quantity": 9,
+      "product": "Планшет Apple iPad Pro M4"
+    },
+    {
+      "date": "2025-09-07",
+      "quantity": 18,
+      "product": "Умные часы Garmin Fenix 8"
+    },
+    {
+      "date": "2025-09-08",
+      "quantity": 7,
+      "product": "Монитор Dell UltraSharp 34"
+    },
+    {
+      "date": "2025-09-09",
+      "quantity": 22,
+      "product": "Телевизор LG OLED 8K"
+    },
+    {
+      "date": "2025-09-10",
+      "quantity": 11,
+      "product": "Игровая мышь Logitech G Pro X"
+    },
+    {
+      "date": "2025-09-11",
+      "quantity": 14,
+      "product": "Фотоаппарат Canon EOS R7"
+    },
+    {
+      "date": "2025-09-12",
+      "quantity": 6,
+      "product": "Колонка JBL Charge 6"
+    },
+    {
+      "date": "2025-09-13",
+      "quantity": 17,
+      "product": "Электросамокат Xiaomi Pro 3"
+    },
+    {
+      "date": "2025-09-14",
+      "quantity": 10,
+      "product": "Видеокарта NVIDIA RTX 5090"
+    },
+    {
+      "date": "2025-09-15",
+      "quantity": 19,
+      "product": "Процессор AMD Ryzen 9950X"
+    }
+  ],
+  "config": {
+    "pages": [
+      {
+        "title": "Sales Overview",
+        "controls": [
+          {
+            "id": "product_filter",
+            "type": "filter",
+            "column": "product",
+            "targets": [
+              "sales_line",
+              "sales_bar",
+              "sales_histogram"
+            ],
+            "selector": {
+              "type": "dropdown",
+              "multi": true,
+              "title": "Select Product"
+            }
+          },
+          {
+            "id": "date_filter",
+            "type": "filter",
+            "column": "date",
+            "targets": [
+              "sales_line",
+              "sales_bar",
+              "sales_histogram"
+            ],
+            "selector": {
+              "type": "date_picker",
+              "range": true,
+              "title": "Select Date Range"
+            }
+          }
+        ],
+        "components": [
+          {
+            "id": "sales_line",
+            "type": "graph",
+            "title": "Sales Trend Over Time",
+            "figure": {
+              "_target_": "line",
+              "data_frame": "data",
+              "x": "date",
+              "y": "quantity",
+              "color": "product",
+              "labels": {
+                "date": "Date",
+                "quantity": "Quantity Sold",
+                "product": "Product"
+              }
+            }
+          },
+          {
+            "id": "sales_bar",
+            "type": "graph",
+            "title": "Total Sales by Product",
+            "figure": {
+              "_target_": "bar",
+              "data_frame": "data",
+              "x": "product",
+              "y": "quantity",
+              "labels": {
+                "product": "Product",
+                "quantity": "Quantity Sold"
+              }
+            }
+          },
+          {
+            "id": "sales_histogram",
+            "type": "graph",
+            "title": "Distribution of Quantity Sold",
+            "figure": {
+              "_target_": "histogram",
+              "data_frame": "data",
+              "x": "quantity",
+              "labels": {
+                "quantity": "Quantity Sold",
+                "count": "Frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "title": "Product Sales Dashboard",
+    "theme": "vizro_dark"
+  }
+}
